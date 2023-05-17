@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head.html::head}" />
+<body>
+<header th:replace="~{/fragments/header.html::header}" />
+<form th:object="${payload}" method="post" enctype="multipart/form-data">
+  <h2>File Upload</h2>
+  <table>
+    <tr>
+      <th>Upload Type</th>
+      <th>File Selection</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Single</td>
+      <td>
+        <input type="file" name="file" />
+      </td>
+      <td>
+        <input type="submit" value="Upload" formaction="/files/upload/single" />
+      </td>
+    </tr>
+    <tr>
+      <td>Multiple</td>
+      <td>
+        <input type="file" name="files" multiple />
+      </td>
+      <td>
+        <input type="submit" value="Upload" formaction="/files/upload/multiple" />
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

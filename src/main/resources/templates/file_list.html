@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head.html::head}" />
+<body>
+<header th:replace="~{/fragments/header.html::header}" />
+<form th:object="${payload}">
+    <h2>List of Files</h2>
+    <div th:unless="*{message} == null" th:text="*{message}" />
+    <div th:unless="*{messages} == null" th:each="message : *{messages}">
+        <span th:text="${message}"></span><br>
+    </div>
+    <br>
+    <div th:if="*{fileInfos.size() > 0}" th:text="*{fileInfos.size()} + ' file(s).'" />
+    <div th:unless="*{fileInfos.size() > 0}">No Files.</div>
+    <br>
+    <div>
+        <table>
+            <tr>
+                <th>File Name</th>
+                <th>Link</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:if="*{fileInfos.size() == 0}">
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr th:each="file : *{fileInfos}">
+                <td th:text="${file.name}" />
+                <td><a th:href="@{${file.url}}">Download</a></td>
+                <td>
+                    <input type="submit" value="Delete" th:formaction="'/files/delete/' + ${file.name}" formmethod="post" />
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Delete All" formaction="/files/empty" formmethod="post" />
+    </div>
+</form>
+</body>
+</html>
