@@ -33,6 +33,12 @@ public class FileInFolderController {
         return new ModelAndView("upload", "payload", service.newFile());
     }
 
+    @GetMapping("/files/new/custom")
+    public ModelAndView customNewFile(Model model) {
+        model.asMap().clear();
+        return new ModelAndView("upload_custom", "payload", service.newFile());
+    }
+
     @PostMapping("/files/upload/single")
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile file,
                                    HttpServletRequest request,

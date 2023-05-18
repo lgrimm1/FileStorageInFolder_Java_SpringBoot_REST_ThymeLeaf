@@ -69,6 +69,27 @@ class FileInFolderControllerTest {
     }
 
     @Test
+    void customNewFile() throws Exception {
+        Payload sentPayload = new Payload(
+                null,
+                null,
+                null
+        );
+        when(service.newFile())
+                .thenReturn(sentPayload);
+
+        mockMvc
+                .perform(
+                        get("/files/new/custom")
+                )
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(view().name("upload_custom"))
+                .andExpect(model().size(1))
+                .andExpect(model().attribute("payload", sentPayload));
+    }
+
+    @Test
     void uploadFile() throws Exception {
         MockMultipartFile file1 = new MockMultipartFile(
                 "file",
