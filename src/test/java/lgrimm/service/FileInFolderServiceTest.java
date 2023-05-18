@@ -6,8 +6,6 @@ import org.junit.jupiter.api.*;
 import org.mockito.*;
 import org.springframework.core.io.*;
 import org.springframework.http.*;
-import org.springframework.test.web.*;
-import org.springframework.web.servlet.*;
 
 import java.io.*;
 import java.net.*;
@@ -15,7 +13,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.stream.*;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class FileInFolderServiceTest {
 

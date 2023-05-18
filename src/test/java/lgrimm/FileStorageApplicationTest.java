@@ -12,7 +12,7 @@ class FileStorageApplicationTest {
     FileInFolderController fileInFolderController;
 
     @Test
-    public void contextLoads() throws Exception {
+    public void contextLoads() {
         Assertions.assertNotNull(fileInFolderController);
     }
 }
